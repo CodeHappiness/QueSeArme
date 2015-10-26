@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- FIREBASE -->
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>QueSeArme</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/micss.css" rel="stylesheet" type="text/css"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      <script src="jquery/jquery.js"></script>
+    <script src="bootstrap-datepicker/js/bootstrap-datepicker.js"></script>  
+  </head>
+  <body>
+    <div class="container">
+        <div class="row firstRow">
+          <div class="col-md-5 col-md-offset-3">
+            <form>
+              <div class="form-group">
+                <input type="text" class="form-control" id="search" placeHolder="Buscar">
+              </div>
+            </form>
+          </div>
+          <div class="col-md-1">
+            <a href="perfil.html"><img src="img/perfil.png" id="ProfileImg"/></a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 whiteRow">
+              <h1> Crear Evento </h1>
+
+              <form>
+                <div class="form-group">
+                  <label for="nombreEvento">Nombre del Evento:</label>
+                  <input type="text" class="form-control" id="nombreEvento" placeholder="Evento">
+                </div>
+                <div class="form-group">
+                  <label for="tipoEvento">Tipo del Evento:</label>
+                  <input type="text" class="form-control" id="tipoEvento" placeholder="Tipo">
+                </div>
+                <div class="form-group">
+                  <label for="lugar">Lugar:</label>
+                  <input type="text" class="form-control" id="lugar" placeholder="Lugar">
+                </div>
+                <div class="form-group">
+                  <label for="date">Fecha:</label>
+                  <input type="date" class="form-control" id="date" placeholder="Fecha">
+                </div>
+                <div class="form-group">
+                  <label for="hora1">Hora:</label>
+                  <div class="row">
+                    <div class="col-md-6">
+                        <input type="time" class="form-control" id="hora1" placeholder="De">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="time" class="form-control" id="hora2" placeholder="Hasta">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="des">Descripcion del Evento:</label>
+                  <input type="text-area" class="form-control" id="desc" placeholder="description">
+                </div>
+                <button type="submit" class="btn btn-default">Crear</button>
+              </form>
+
+          </div>
+        </div>
+        <div class="row menuNoIndex">
+          <div class="col-md-6 col-md-offset-3">
+            <table>
+              <tr>
+                <td class="lugarTable"><a href="index.html"><img src="img/chuy.png" class="tableImg"/></a></td>
+                <td class="lugarTable"><a href="crearEvento.html"><img src="img/crear evento.png" class="tableImg"/></a></td>
+                <td class="lugarTable"><a href="buscarLugar.html"><img src="img/buscarLugar.png" class="tableImg"/></a></td>
+                <td class="lugarTable"><a href="buscarEvento.html"><img src="img/Buscar Evento.png" class="BuscarEvento"/></a></td>
+                <td class="lugarTable"><a href="random.html"><img src="img/random.png" class="Random"/></a></td>
+              </tr>
+            </tabel>
+          </div>
+        </div>
+    </div>
+    <script>
+    $(function(){
+      window.prettyPrint && prettyPrint();
+      $('#dp1').datepicker({
+        format: 'mm-dd-yyyy',
+                todayBtn: 'linked'
+      });
+            
+      $('#dp2').datepicker();
+            $('#btn2').click(function(e){
+                e.stopPropagation();
+                $('#dp2').datepicker('update', '03/17/12');
+            });             
+            
+      $('#dp3').datepicker();
+      
+      
+      var startDate = new Date(2012,1,20);
+      var endDate = new Date(2012,1,25);
+      $('#dp4').datepicker()
+        .on('changeDate', function(ev){
+          if (ev.date.valueOf() > endDate.valueOf()){
+            $('#alert').show().find('strong').text('The start date can not be greater then the end date');
+          } else {
+            $('#alert').hide();
+            startDate = new Date(ev.date);
+            $('#startDate').text($('#dp4').data('date'));
+          }
+          $('#dp4').datepicker('hide');
+        });
+      $('#dp5').datepicker()
+        .on('changeDate', function(ev){
+          if (ev.date.valueOf() < startDate.valueOf()){
+            $('#alert').show().find('strong').text('The end date can not be less then the start date');
+          } else {
+            $('#alert').hide();
+            endDate = new Date(ev.date);
+            $('#endDate').text($('#dp5').data('date'));
+          }
+          $('#dp5').datepicker('hide');
+        });
+                
+            //inline    
+            $('#dp6').datepicker({
+                todayBtn: 'linked'
+            });
+                
+            $('#btn6').click(function(){
+                $('#dp6').datepicker('update', '15-05-1984');
+            });            
+            
+            $('#btn7').click(function(){
+                $('#dp6').data('datepicker').date = null;
+                $('#dp6').find('.active').removeClass('active');                
+            });            
+    });
+  </script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+  </body>
+</html>

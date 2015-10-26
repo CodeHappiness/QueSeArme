@@ -1,0 +1,56 @@
+
+.row{
+	margin-top: 20px;
+}
+#ProfileImg{
+	width:45%;
+	height:auto;
+	display:block;
+}
+table, table tr{
+	width:100%;
+}
+.indexTable{
+	width: 50%;
+
+}
+/*pene grande y duro*/
+.lugarTable{
+	width:20%;
+	
+}
+.perfilTable{
+	width:25%;
+}
+.tableImg{
+	width:100%;
+}
+.tableImgDesc{
+	text-align:center;
+}
+.lugarFila{
+	border:1px black solid;
+	margin-bottom:10px;
+	background-color:white;
+}
+.lugarTitulo, .lugarDesc{
+	text-align:center;
+}
+.BuscarEvento{
+	width:45%;
+	margin-left:25%;
+}
+.Random{
+	width:80%;
+}
+.menuNoIndex{
+	background-color:#E9178E;
+}
+body{
+	
+	background-color:#E9178E;
+}
+.whiteRow{
+	background-color:white;
+}
+
